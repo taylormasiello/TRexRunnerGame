@@ -16,5 +16,25 @@ namespace TRexRunnerGame
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainGameTimerEvent(object sender, EventArgs e)
+        {
+
+        }
+
+        private void keyIsDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void keyIsUp(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
