@@ -62,7 +62,7 @@ namespace TRexRunnerGame
                 jumpSpeed = 0;
             }
 
-            foreach (Control x in this.Controls)
+            foreach (Control x in this.Controls) //movement, respawning, collsion
             {
                 if (x is PictureBox && (string)x.Tag == "obstacle")
                 {
@@ -73,8 +73,30 @@ namespace TRexRunnerGame
                         x.Left = this.ClientSize.Width + rand.Next(200, 500) + (x.Width * 15);
                         score++;
                     }
+
+                    if (TRex.Bounds.IntersectsWith(x.Bounds)) //collision between tRex & obstacle x
+                    {
+                        gameTimer.Stop();
+                        TRex.Image = Properties.Resources.dead;
+                        txtScore.Text += " Press R to Reset the Game";
+                        isGameOver = true;
+                    }
                 }
             }
+
+            if (score > 10)
+            {
+                obstacleSpeed = 15;
+            }
+            else if (score > 20)
+            {
+                obstacleSpeed = 25;
+            }
+            else if (score > 30)
+            {
+                obstacleSpeed = 35;
+            }
+
         }
 
         private void keyIsDown(object sender, KeyEventArgs e)
